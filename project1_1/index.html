@@ -2,13 +2,13 @@
 <html>
 <head>
 <style>
-.grid-container {
+.grid-container-heading {
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: white;
   padding: 10px;
 }
-.grid-item {
+.grid-heading-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -16,9 +16,15 @@
   font-family: "Arial Black";  
   text-align: left;
 }
+.grid-container-detail {
+  display: grid;
+  grid-template-columns: 50px 40px 180px 40px 180px 40px 110px 130px;
+  background-color: white;
+  padding: 10px;
+}
 .grid-itemStatusPending {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 20px;
   font-size: 20px;
   color: orange;  
@@ -30,7 +36,15 @@
   margin: 5px auto;
 }
 
-.element {
+.emptyelement {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  opacity: .8;
+  position: relative;
+}
+
+.dotelement {
   width: 40px;
   height: 40px;
   background-color: lightgrey;
@@ -40,7 +54,7 @@
   margin: 10px auto;
 }
 
-.element:before {
+.dotelement:before {
   width: 30px;
   height: 30px;
   top: 5px;
@@ -53,29 +67,68 @@
   opacity: .8;
 }
 
+.lineelement {
+  width: 180px;
+  height: 40px;
+  background-color: white;
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+
+.lineelement:before {
+  width: 180px;
+  height: 10px;
+  top: 15px;
+  position: absolute;
+  content: "";
+  display: block;
+  background-color: lightgrey;
+  opacity: .8;
+}
+
 </style>
 </head>
 <body>
 
-<div class="grid-container">
-  <div class="grid-item">Task1</div>
-  <div class="grid-item">Task2</div>
-  <div class="grid-item">Task3</div>  
-  <div class="grid-item">Status</div>
+<div class="grid-container-heading">
+  <div class="grid-heading-item">Task1</div>
+  <div class="grid-heading-item">Task2</div>
+  <div class="grid-heading-item">Task3</div>  
+  <div class="grid-heading-item">Status</div>
+</div>
 
+<div class="grid-container-detail">
   <div class="container">
-    <div class="element"></div>
+    <div class="emptyelement"></div>
   </div>  
 
   <div class="container">
-    <div class="element"></div>
+    <div class="dotelement"></div>
   </div>  
 
   <div class="container">
-    <div class="element"></div>
+    <div class="lineelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="lineelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="emptyelement"></div>
   </div>  
 
   <div class="grid-itemStatusPending">Pending</div>
 </div>
+
 </body>
 </html>
