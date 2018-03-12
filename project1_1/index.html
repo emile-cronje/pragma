@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: white;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  font-family: "Arial Black";  
+  text-align: left;
+}
+.grid-itemStatusPending {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  color: orange;  
+  font-family: "Arial Black";  
+  text-align: left;
+}
+
+.container {
+  margin: 5px auto;
+}
+
+.element {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;  
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+
+.element:before {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-radius: 50%;    
+  background-color: orange;
+  opacity: .8;
+}
+
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="grid-item">Task1</div>
+  <div class="grid-item">Task2</div>
+  <div class="grid-item">Task3</div>  
+  <div class="grid-item">Status</div>
+
+  <div class="container">
+    <div class="element"></div>
+  </div>  
+
+  <div class="container">
+    <div class="element"></div>
+  </div>  
+
+  <div class="container">
+    <div class="element"></div>
+  </div>  
+
+  <div class="grid-itemStatusPending">Pending</div>
+</div>
+</body>
+</html>
