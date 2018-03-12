@@ -15,6 +15,7 @@
   font-size: 20px;
   font-family: "Arial Black";  
   text-align: left;
+  border-style: none;
 }
 .grid-container-detail {
   display: grid;
@@ -40,7 +41,24 @@
   font-family: "Arial Black";  
   text-align: left;
 }
-
+.grid-itemStatusPassed {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  color: lightseagreen;
+  font-family: "Arial Black";
+  text-align: left;
+}
+.grid-itemStatusFailed {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  color: red;
+  font-family: "Arial Black";
+  text-align: left;
+}
 .container {
   margin: 5px auto;
 }
@@ -116,6 +134,48 @@
   background-color: blue;
   opacity: .8;
 }
+.dotelement_passed {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+.dotelement_passed:before {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-radius: 50%;
+  background-color: lightseagreen;
+  opacity: .8;
+}
+.dotelement_failed {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+.dotelement_failed:before {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-radius: 50%;
+  background-color: red;
+  opacity: .8;
+}
 .lineelement {
   width: 180px;
   height: 40px;
@@ -139,7 +199,7 @@
   background-color: lightgrey;
   opacity: .8;
 }
-.progresselement {
+.progresselementrunning {
   width: 120px;
   height: 3px;
   background-color: blue;
@@ -148,6 +208,28 @@
   left: -5px;
   position: absolute;
 }
+.progresselementpassed {
+  width: 190px;
+  height: 3px;
+  background-color: lightseagreen;
+  opacity: .8;
+  top: 18px;
+  left: -5px;
+  position: absolute;
+}
+.progresselementfailed {
+  width: 190px;
+  height: 3px;
+  background-color: red;
+  opacity: .8;
+  top: 18px;
+  left: -5px;
+  position: absolute;
+}
+
+.failed_image {
+  content:url("./images/new/error.png");
+}​
 
 </style>
 </head>
@@ -158,6 +240,10 @@
   <div class="grid-heading-item">Task2</div>
   <div class="grid-heading-item">Task3</div>  
   <div class="grid-heading-item">Status</div>
+</div>
+
+<div class="container">
+  <div class="lineelementdivider"></div>
 </div>
 
 <div class="grid-container-detail">
@@ -208,7 +294,7 @@
 
   <div class="container">
     <div class="lineelement">
-      <div class="progresselement"></div>        
+      <div class="progresselementrunning"></div>
     </div>
   </div>  
 
@@ -233,6 +319,164 @@
   <div class="container">
     <div class="lineelementdivider"></div>
   </div>  
+</div>
+
+<div class="grid-container-detail">
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement_passed">
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselementpassed"></div>
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement_passed"></div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselementpassed"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_passed"></div>
+  </div>  
+
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>  
+
+  <div class="grid-itemStatusPassed">Passed</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>  
+</div>
+
+<div class="grid-container-detail">
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_failed"></div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_none"></div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_none"></div>
+  </div>
+
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="grid-itemStatusFailed">Failed</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>
+</div>
+
+<div class="grid-container-detail">
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_passed">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselementpassed"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_passed"></div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselementpassed"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_passed"></div>
+  </div>
+
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="grid-itemStatusPassed">Passed</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>
+</div>
+
+<div class="grid-container-detail">
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_failed">
+      <div class="failed_image"></div>​
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselementfailed"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_failed"></div>
+  </div>
+
+  <div class="container">
+    <div class="lineelement"></div>
+  </div>
+
+  <div class="container">
+    <div class="dotelement_none"></div>
+  </div>
+
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>
+
+  <div class="grid-itemStatusFailed">Failed</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>
 </div>
 
 </body>
