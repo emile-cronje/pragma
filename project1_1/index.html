@@ -31,6 +31,15 @@
   font-family: "Arial Black";  
   text-align: left;
 }
+.grid-itemStatusRunning {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 20px;
+  color: blue;  
+  font-family: "Arial Black";  
+  text-align: left;
+}
 
 .container {
   margin: 5px auto;
@@ -44,7 +53,7 @@
   position: relative;
 }
 
-.dotelement {
+.dotelement_none {
   width: 40px;
   height: 40px;
   background-color: lightgrey;
@@ -53,8 +62,28 @@
   position: relative;
   margin: 10px auto;
 }
-
-.dotelement:before {
+.dotelement_none:before {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-radius: 50%;    
+  background-color: lightgrey;
+  opacity: .8;
+}
+.dotelement_pending {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;  
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+.dotelement_pending:before {
   width: 30px;
   height: 30px;
   top: 5px;
@@ -66,7 +95,27 @@
   background-color: orange;
   opacity: .8;
 }
-
+.dotelement_running {
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  border-radius: 50%;  
+  opacity: .8;
+  position: relative;
+  margin: 10px auto;
+}
+.dotelement_running:before {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-radius: 50%;    
+  background-color: blue;
+  opacity: .8;
+}
 .lineelement {
   width: 180px;
   height: 40px;
@@ -75,7 +124,11 @@
   position: relative;
   margin: 10px auto;
 }
-
+.lineelementdivider {
+  width: 850px;
+  height: 2px;
+  background-color: lightgrey;
+}
 .lineelement:before {
   width: 180px;
   height: 10px;
@@ -85,6 +138,15 @@
   display: block;
   background-color: lightgrey;
   opacity: .8;
+}
+.progresselement {
+  width: 120px;
+  height: 3px;
+  background-color: blue;
+  opacity: .8;
+  top: 18px;
+  left: -5px;
+  position: absolute;
 }
 
 </style>
@@ -104,7 +166,7 @@
   </div>  
 
   <div class="container">
-    <div class="dotelement"></div>
+    <div class="dotelement_pending"></div>
   </div>  
 
   <div class="container">
@@ -112,7 +174,7 @@
   </div>  
 
   <div class="container">
-    <div class="dotelement"></div>
+    <div class="dotelement_none"></div>
   </div>  
 
   <div class="container">
@@ -120,7 +182,7 @@
   </div>  
 
   <div class="container">
-    <div class="dotelement"></div>
+    <div class="dotelement_none"></div>
   </div>  
 
   <div class="container">
@@ -128,6 +190,49 @@
   </div>  
 
   <div class="grid-itemStatusPending">Pending</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>  
+</div>
+
+<div class="grid-container-detail">
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement_running">
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="lineelement">
+      <div class="progresselement"></div>        
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement_none"></div>
+  </div>  
+
+  <div class="container">
+    <div class="lineelement"></div>
+  </div>  
+
+  <div class="container">
+    <div class="dotelement_none"></div>
+  </div>  
+
+  <div class="container">
+    <div class="emptyelement"></div>
+  </div>  
+
+  <div class="grid-itemStatusRunning">Running</div>
+
+  <div class="container">
+    <div class="lineelementdivider"></div>
+  </div>  
 </div>
 
 </body>
