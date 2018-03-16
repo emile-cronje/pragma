@@ -1,0 +1,28 @@
+<template></template>
+
+<script>
+class TodoItem extends HTMLElement {
+    get title() {
+        return this.getAttribute("title") || this._title;
+    }
+
+    set title(newValue) {
+        this._title = newValue;
+
+        if (this.isConnected == true) { // is this TodoItem part of the document?
+            this.update();
+        }
+    }
+
+    connectedCallback() {
+        this.setAttribute("role", "listitem");
+        this.update();
+    }
+
+    update() {
+        this.innerHTML = this.title;
+    }
+}
+
+customElements.define("todo-item", TodoItem);
+</script>

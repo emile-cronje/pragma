@@ -1,0 +1,116 @@
+<template></template>
+
+<script>
+class TodoList extends HTMLElement {
+    constructor() {
+        super();
+
+        this.clickHandler = this._click.bind(this);
+        this.lastId = 0;
+
+        this.items = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')): [];
+        console.log("starting up items " + this.items.length);
+        this._renderList(this.items);
+    }
+
+    connectedCallback() {
+        this.setAttribute("role", "list");
+        this.addEventListener("click", this.clickHandler);
+    }
+
+    disconnectedCallback() {
+        this.removeEventListener("click", this.clickHandler);
+    }
+
+    add(item) {
+        if (Array.isArray(item))
+        {
+            const fragment = document.createDocumentFragment();
+
+            for (let title of item) {
+                let newItem = this._addItem(title);
+                fragment.appendChild(this._renderItem(newItem));
+            }
+
+            this._addChild(fragment);
+        }
+        else {
+            let newItem = this._addItem(item);
+            this._addChild(this._renderItem(newItem));
+
+            console.log("added item " + newItem.id + " " + newItem.title);
+            console.log("all items " + JSON.stringify(this.items));
+        }
+    }
+
+    deleteSelectedItems() {
+        const selectedItems = Array.from(this.querySelectorAll('todo-item[aria-selected="true"]'));
+
+        for (let item of selectedItems) {
+            const index = this.items.indexOf(this.items.find(i => i.id == Number(item.dataset.id)));
+            this.items.splice(index, 1);
+            localStorage.setItem('todoList', JSON.stringify(this.items));
+            this.removeChild(item);
+        }
+
+        for (let item of this.items) {
+            console.log("_renderList item: " + item.id + " " + item.title);
+        }
+    }
+
+    filter(text) {
+        const itemsToShow = this.items.filter(item => item.title.indexOf(text) > -1).map(item => item.id);
+
+        for (let todoItem of this.children) {
+            const visible = itemsToShow.indexOf(Number(todoItem.dataset.id)) != -1;
+            todoItem.setAttribute("aria-hidden", !visible);
+        }
+    }
+
+    _renderItem(item) {
+        const element = document.createElement("todo-item");
+        element.title = item.title;
+        console.log("_renderItem item: " + item.id + " " + item.title);
+        element.setAttribute("data-id", this.lastId);
+        element.setAttribute("aria-hidden", false);
+
+        this.lastId += 1;
+        return element;
+    }
+
+    _addItem(title) {
+        let newItem = { id: this.lastId, title: title, completed: false };
+        this.items.push(newItem);
+
+        localStorage.setItem('todoList', JSON.stringify(this.items));
+        console.log("_createItem items " + JSON.stringify(this.items));
+
+        return newItem;
+    }
+
+    _addChild(child) {
+        this.appendChild(child);
+    }
+
+    _renderList(items) {
+        const fragment = document.createDocumentFragment();
+
+        for (let item of items) {
+            console.log("_renderList item: " + item.id + " " + item.title);
+            fragment.appendChild(this._renderItem(item));
+        }
+
+        this.appendChild(fragment);
+    }
+
+
+    _click(event) {
+        if (event.target.tagName == "TODO-ITEM") {
+            const isSelected = event.target.getAttribute("aria-selected") == "true";
+            event.target.setAttribute("aria-selected", !isSelected);
+        }
+    }
+}
+
+customElements.define("todo-list", TodoList)
+</script>

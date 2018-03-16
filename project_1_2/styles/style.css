@@ -1,0 +1,96 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    width: 100vw;
+    height: 100vh;
+
+    --window-height: 1.5rem;
+    --button-width: 5rem;
+    --mobile-width: 25.75rem;
+    --selected-background: #77B1D7;
+}
+
+body {
+    width: 100%;
+    max-width: var(--mobile-width);
+    margin: 0 auto;
+    display: flex;
+    background-color: #E1F3FF;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #ECECEC;
+}
+
+button {
+    width: var(--button-width);
+    margin: 0;
+    padding: 0;
+}
+
+#btnAdd {
+    background-color: #0081D5;
+    color: white;
+}
+
+#btnDelete {
+    background-color: #D2335B;
+    color: white;
+}
+
+#edtFilter {
+    background-color: white;
+    color: black;
+}
+
+button, input {
+    height: var(--window-height);
+}
+
+input {
+    flex: 1;
+}
+
+todo-list {
+    display: block;
+    overflow: auto;
+    flex: 2;
+}
+
+todo-item {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin: 0.2rem;
+    padding: 0.5rem;
+}
+
+todo-item:before {
+    content: "";
+    transition: background 0.5s cubic-bezier(0, 0.95, 0.37, 1.61);
+    will-change: background;
+}
+
+todo-item[aria-selected="true"]:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.7rem;
+    width: 1rem;
+    background: var(--selected-background);
+}
+
+todo-item[aria-hidden="false"] {
+    display:block;
+}
+
+todo-item[aria-hidden="true"] {
+    display:none;
+}
+
