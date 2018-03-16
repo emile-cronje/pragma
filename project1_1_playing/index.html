@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+            height: 100vh;
+            width: 100vw;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            --watershed-colour: #E0EBF8;
+            --pending-colour: #F08F11;
+            --running-colour: #00A2FF;
+            --passed-colour:  #08A808;
+            --failed-colour:  #DF1111;
+            --circle-size: 3.125rem;
+        }
+        body {
+            display: grid;
+            grid-template-columns: 1.5rem repeat(2, var(--circle-size) 1fr) 3.125rem 15rem;
+            grid-template-rows: 3rem repeat(6, 1fr);
+        }
+        div[data-title]{
+            align-self: center;
+            grid-row: 1;
+        }
+        div[data-title="Task1"] {
+            grid-column: 2;
+        }
+
+        div[data-title="Task2"] {
+            grid-column: 4;
+        }
+
+        div[data-title="Task3"] {
+            grid-column: 6;
+        }
+
+        div[data-title="Status"] {
+            grid-column: 7;
+            text-align: center;
+        }
+        .grid-heading-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 20px;
+            font-family: "Arial Black";
+            text-align: left;
+            border-style: none;
+        }
+        .dotelement_none {
+            width: 40px;
+            height: 40px;
+            background-color: lightgrey;
+            border-radius: 50%;
+            opacity: .8;
+            position: relative;
+            margin: 10px auto;
+        }
+        .lineelement {
+            width: 140%;
+            height: 40px;
+            background-color: white;
+            opacity: .8;
+            position: relative;
+            margin: 10px auto;
+        }
+        .lineelement:before {
+            width: 100%;
+            height: 10px;
+            top: 15px;
+            position: absolute;
+            content: "";
+            display: block;
+            background-color: lightgrey;
+            opacity: .8;
+            margin-left: -12%;
+            margin-right: -5%;
+        }
+        .grid-itemStatusPending {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            font-size: 20px;
+            color: orange;
+            font-family: "Arial Black";
+            text-align: left;
+        }
+        .grid-itemStatusRunning {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            font-size: 20px;
+            color: blue;
+            font-family: "Arial Black";
+            text-align: left;
+        }
+        .dotelement_pending {
+            width: 40px;
+            height: 40px;
+            background-color: lightgrey;
+            border-radius: 50%;
+            opacity: .8;
+            position: relative;
+            margin: 10px auto;
+        }
+        .dotelement_pending:before {
+            width: 30px;
+            height: 30px;
+            top: 5px;
+            left: 5px;
+            position: absolute;
+            content: "";
+            display: block;
+            border-radius: 50%;
+            background-color: orange;
+            opacity: .8;
+        }
+        .dotelement_running {
+            width: 40px;
+            height: 40px;
+            background-color: lightgrey;
+            border-radius: 50%;
+            opacity: .8;
+            position: relative;
+            margin: 10px auto;
+        }
+        .dotelement_running:before {
+            width: 30px;
+            height: 30px;
+            top: 5px;
+            left: 5px;
+            position: absolute;
+            content: "";
+            display: block;
+            border-radius: 50%;
+            background-color: blue;
+            opacity: .8;
+        }
+    </style>
+</head>
+<body>
+    <div data-title="Task1">Task1</div>
+    <div data-title="Task2">Task2</div>
+    <div data-title="Task3">Task3</div>
+    <div data-title="Status">Status</div>
+</body>
+</html>
