@@ -23,9 +23,9 @@
     </div>
 
     <script type="module">
-        import {ViewModel} from './viewmodels/todo_list_viewmodel.js';
-        import {ToDoListView} from './views/todo_list_view.js';
-        import {ToDoListRepository} from './repositories/todo_list_repository.js';
+        import {ViewModel} from './viewmodels/Todo-list-viewmodel.js';
+        import {ToDoListView} from './views/Todo-list-view.js';
+        import {ToDoListRepository} from './repositories/Todo-list-repository.js';
         const repository = new ToDoListRepository();
         const viewModel = new ViewModel(repository);
         const view = new ToDoListView(viewModel);
