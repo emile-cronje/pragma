@@ -8,7 +8,7 @@ html, body {
     --window-height: 1.5rem;
     --button-width: 5rem;
     --mobile-width: 25.75rem;
-    --selected-background: cornflowerblue;
+    --selected-background: #77B1D7;
 }
 
 body {
@@ -16,18 +16,36 @@ body {
     max-width: var(--mobile-width);
     margin: 0 auto;
     display: flex;
+    background-color: #E1F3FF;
     flex-direction: column;
 }
 
 header {
+    width: 100%;
     display: flex;
     align-items: center;
+    background-color: #ECECEC;
 }
 
 button {
     width: var(--button-width);
     margin: 0;
     padding: 0;
+}
+
+#btnAdd {
+    background-color: #0081D5;
+    color: white;
+}
+
+#btnDelete {
+    background-color: #D2335B;
+    color: white;
+}
+
+#edtFilter {
+    background-color: white;
+    color: black;
 }
 
 button, input {
@@ -38,13 +56,13 @@ input {
     flex: 1;
 }
 
-todo-list {
+ul {
     display: block;
     overflow: auto;
-    flex: 1;
+    flex: 2;
 }
 
-todo-item {
+li {
     display: block;
     position: relative;
     cursor: pointer;
@@ -52,27 +70,27 @@ todo-item {
     padding: 0.5rem;
 }
 
-todo-item:before {
+li:before {
     content: "";
     transition: background 0.5s cubic-bezier(0, 0.95, 0.37, 1.61);
     will-change: background;
 }
 
-todo-item[aria-selected="true"]:before {
+li[aria-selected="true"]:before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: -0.7rem;
     width: 1rem;
-
     background: var(--selected-background);
 }
 
-todo-item[aria-hidden="false"] {
+li[aria-hidden="false"] {
     display:block;
 }
 
-todo-item[aria-hidden="true"] {
+li[aria-hidden="true"] {
     display:none;
 }
+
