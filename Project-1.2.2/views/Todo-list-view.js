@@ -61,7 +61,6 @@ export class ToDoListView {
     async _addAsync(item) {
         let newItem = await this.viewModel.addItemAsync(item);
         this._addChild(this._renderItem(newItem));
-        console.log('view after add: ' + JSON.stringify(this.viewModel.fetchItemsAsync()));
     }
 
     _renderItem(item, completed) {
@@ -82,9 +81,6 @@ export class ToDoListView {
         let items = await this.viewModel.fetchItemsAsync();
         let sortedToDoItems = items.todo.sort((a, b) => Number(b.id) - Number(a.id));
         let sortedCompletedItems = items.completed.sort((a, b) => Number(b.id) - Number(a.id));
-        console.log('_renderList');
-        console.log(sortedToDoItems);
-        console.log(sortedCompletedItems);
 
         for (let item of sortedToDoItems) {
             this._renderItem(item);

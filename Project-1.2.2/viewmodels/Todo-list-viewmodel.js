@@ -1,4 +1,4 @@
-import {ToDoItem} from '../models/todo_item.js';
+import {ToDoItem} from '../models/Todo-item-model.js';
 
 export class ViewModel {
     constructor(repository) {
@@ -41,9 +41,6 @@ export class ViewModel {
             viewItem.setAttribute("aria-selected", false);
         }
 
-        console.log('todo count: ' + items.todo.length);
-        console.log('completed count: ' + items.completed.length);
-        console.log('items: ' + JSON.stringify(items));
         this._repository.saveItemsAsync(items);
     }
 }

@@ -27,8 +27,6 @@ export class ToDoListRepository {
 
             this._items.todo.push(item);
 
-            console.log('repo setItems');
-            console.log(JSON.stringify(this._items));
             localStorage.setItem('todoList', JSON.stringify(this._items));
             this._lastId += 1;
 
@@ -38,10 +36,7 @@ export class ToDoListRepository {
 
     saveItemsAsync(items) {
         return new Promise(resolve => {
-            console.log('repo saveItemsAsync');
-            console.log(JSON.stringify(items));
             localStorage.setItem('todoList', JSON.stringify(items));
-
             resolve();
         });
     }
