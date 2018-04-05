@@ -34,12 +34,21 @@ export class ToDoListView {
         this.btnCompleted.removeEventListener(this.btnCompletedClickHandler);
         this.edtFilter.removeEventListener("change", this.edtFilterChangeHandler);
         this.todoList.removeEventListener("click", this.todoListClickHandler);
+        this.completedList.removeEventListener("click", this.completedListClickHandler);
+
+        this.btnAddClickHandler = null;
+        this.btnDeleteClickHandler = null;
+        this.btnCompletedClickHandler = null;
+        this.edtFilterChangeHandler = null;
+        this.todoListClickHandler = null;
+        this.completedListClickHandler = null;
 
         delete this.btnAdd;
         delete this.btnDelete;
         delete this.btnCompleted;
         delete this.edtFilter;
         delete this.todoList;
+        delete this.completedList;
     }
 
     async _filter(text) {
@@ -66,15 +75,43 @@ export class ToDoListView {
     _renderItem(item, completed) {
         let list = (completed) ? document.getElementById('completed'):document.getElementById('todo');
 
-        const element = document.createElement("li");
-        element.innerText = item.title;
-        element.setAttribute("data-id", item.id);
-        element.setAttribute("aria-hidden", false);
-        list.insertBefore(element, list.childNodes[0]);
+        const li = document.createElement("li");
+        //element.innerText = item.title;
+        li.setAttribute("data-id", item.id);
+        li.setAttribute("aria-hidden", false);
 
-        list.children.cl
+        const divContainer = document.createElement("div");
+        divContainer.setAttribute("class", "flex-container");
+        li.appendChild(divContainer);
 
-        return element;
+        const divTitle = document.createElement("div");
+        divTitle.setAttribute("class", "title");
+        divTitle.setAttribute("style", "flex-grow: 1");
+
+        const spanTitle = document.createElement("span");
+        spanTitle.setAttribute("class", "titlespan");
+        spanTitle.innerText = item.title;
+        divTitle.appendChild(spanTitle);
+        divContainer.appendChild(divTitle);
+
+        const divSpacer = document.createElement("div");
+        divSpacer.setAttribute("class", "spacer");
+        divSpacer.setAttribute("style", "flex-grow: 8");
+        divContainer.appendChild(divSpacer);
+
+        const divCheckbox = document.createElement("div");
+        divCheckbox.setAttribute("class", "checkbox");
+        divCheckbox.setAttribute("style", "flex-grow: .1");
+        divContainer.appendChild(divCheckbox);
+
+        let inputCheckBox = document.createElement("input");
+        inputCheckBox.type = "checkbox";
+        inputCheckBox.setAttribute("class", "switch");
+        divCheckbox.appendChild(inputCheckBox);
+
+        list.insertBefore(li, list.childNodes[0]);
+
+        return li;
     }
 
     async _renderList() {

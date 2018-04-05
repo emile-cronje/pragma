@@ -94,3 +94,65 @@ li[aria-hidden="true"] {
     display:none;
 }
 
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.switch:before {
+    content: "";
+    position: absolute;
+    background-color: #ccc;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 50px;
+}
+
+.switch:after {
+    content: "";
+    position: absolute;
+    background-color: blue;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    display: block;
+    top: 4px;
+    width: 50%;
+    border-radius: 50%;
+    transition: 1s;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-container>div {
+    background-color: red;
+    font-size: 30px;
+}
+
+.flex-container>.spacer {
+    background-color: blue;
+    font-size: 30px;
+}
+
+.flex-container>.title {
+    background-color: purple;
+    font-size: 30px;
+    width: 5rem;
+}
+
+.flex-container>.titlespan {
+    word-wrap: normal;
+}
+
+input:checked {
+    transform: translateX(26px);
+}
