@@ -104,7 +104,7 @@ li[aria-hidden="true"] {
 .switch:before {
     content: "";
     position: absolute;
-    background-color: #ccc;
+    background-color: yellow;
     display: block;
     left: 0;
     right: 0;
@@ -138,21 +138,14 @@ li[aria-hidden="true"] {
     font-size: 30px;
 }
 
-.flex-container>.spacer {
-    background-color: blue;
-    font-size: 30px;
-}
-
 .flex-container>.title {
     background-color: purple;
     font-size: 30px;
     width: 5rem;
 }
 
-.flex-container>.titlespan {
-    word-wrap: normal;
+[data-completed="true"] .switch:after {
+    transform: translateX(26px);
+    background-color: lightgrey;
 }
 
-input:checked {
-    transform: translateX(26px);
-}

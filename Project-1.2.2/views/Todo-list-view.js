@@ -76,8 +76,13 @@ export class ToDoListView {
         let list = (completed) ? document.getElementById('completed'):document.getElementById('todo');
 
         const li = document.createElement("li");
-        //element.innerText = item.title;
         li.setAttribute("data-id", item.id);
+
+        if (completed === true)
+            li.setAttribute("data-completed", "true");
+        else
+            li.setAttribute("data-completed", "false");
+
         li.setAttribute("aria-hidden", false);
 
         const divContainer = document.createElement("div");
@@ -93,11 +98,6 @@ export class ToDoListView {
         spanTitle.innerText = item.title;
         divTitle.appendChild(spanTitle);
         divContainer.appendChild(divTitle);
-
-        const divSpacer = document.createElement("div");
-        divSpacer.setAttribute("class", "spacer");
-        divSpacer.setAttribute("style", "flex-grow: 8");
-        divContainer.appendChild(divSpacer);
 
         const divCheckbox = document.createElement("div");
         divCheckbox.setAttribute("class", "checkbox");
@@ -177,11 +177,13 @@ export class ToDoListView {
         await this.viewModel.completeItems(selectedCompletedItems, true);
 
         for (let item of selectedToDoItems) {
+            item.setAttribute("data-completed", "true");
             this.todoList.removeChild(item);
             this.completedList.appendChild(item);
         }
 
         for (let item of selectedCompletedItems) {
+            item.setAttribute("data-completed", "false");
             this.completedList.removeChild(item);
             this.todoList.appendChild(item);
         }
