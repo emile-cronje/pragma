@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Project 1.3</title>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            height: 100vh;
+            width: 100vw;
+
+            --side-panel-width: 18.75rem;
+            --tool-height: 4.375rem;
+
+            --header-background: #777777;
+            --main-background: #CCCCCC;
+            --side-background: #EEEEEE;
+            --footer-background: #555555;
+            --dark-text: black;
+            --light-text: white;
+        }
+
+        body {
+            display: grid;
+            grid-template-rows: var(--tool-height) 1fr var(--tool-height);
+            grid-template-columns: 1fr 300px;
+            color: var(--dark-text);
+        }
+
+        header,
+        footer {
+            color: var(--light-text);
+            grid-column: 1 / span 3;
+            height: 70px;
+        }
+
+        header {
+            background: var(--header-background);
+        }
+
+        footer {
+            background: var(--footer-background);
+        }
+
+        div[data-title="Main content"] {
+            background: var(--main-background);
+            width: auto;
+        }
+
+        div[data-title="Sidebar"] {
+            background: var(--side-background);
+            width: 300px;
+        }
+
+        .sidebar {
+            transform: translateX(24px);
+        }
+
+        [data-title] {
+            position: relative;
+        }
+
+        [data-title]:after {
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: bold;
+            top: calc(50% - 0.5rem);
+        }
+
+        .sidebar.open {
+            background-color: red;
+            display: block;            
+        }
+
+        .sidebar.close {
+            background-color: blue;
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header data-title="Header"></header>
+    <div class="main" data-title="Main content">
+        <div class="controls">
+            <button class="btn" data-action="open">Open Menu</button>
+            <button class="btn" data-action="close">Close Menu</button>
+        </div>
+    </div>
+    <div data-title="Sidebar" class="sidebar close"></div>
+    <footer data-title="Footer"></footer>
+
+    <script>
+        const $controls = document.querySelector(".controls");
+        const $sidebar = document.querySelector(".sidebar");
+        let _sidebar_open = false;
+
+        $controls.addEventListener("click", (event) => {
+            switch (event.target.dataset.action) {
+                case "open":
+                    _sidebar_open = true;
+                    break;
+                case "close":
+                    _sidebar_open = false;
+                    break;
+            }
+
+            _render($sidebar);
+        });
+
+        $sidebar.addEventListener("sidebar-opened", (event) => {
+            console.log("SIDEBAR OPENED received!", event);
+        });
+
+        $sidebar.addEventListener("sidebar-closed", (event) => {
+            console.log("SIDEBAR CLOSED received!", event);
+        });
+
+        function _render(sidebar) {
+            console.log("_render called!", event);
+
+            if (sidebar !== null) {
+                console.log("sidebar not null", event);
+
+                if (_sidebar_open === true) {
+                    sidebar.classList.remove("close");                    
+                    sidebar.classList.add("open");
+                    console.log("SIDEBAR OPENED event dispatched!", event);
+                    sidebar.dispatchEvent(new CustomEvent("sidebar-opened"));
+                } else {
+                    sidebar.classList.remove("open");
+                    sidebar.classList.add("close");                    
+                    console.log("SIDEBAR CLOSED event dispatched!", event);
+                    sidebar.dispatchEvent(new CustomEvent("sidebar-closed"));
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
