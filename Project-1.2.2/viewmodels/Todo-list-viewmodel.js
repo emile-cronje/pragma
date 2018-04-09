@@ -6,7 +6,7 @@ export class ViewModel {
     }
 
     dispose() {
-        delete this._repository;
+        this._repository = null;
     }
 
     async fetchItemsAsync() {

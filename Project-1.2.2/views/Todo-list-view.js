@@ -43,12 +43,12 @@ export class ToDoListView {
         this.todoListClickHandler = null;
         this.completedListClickHandler = null;
 
-        delete this.btnAdd;
-        delete this.btnDelete;
-        delete this.btnCompleted;
-        delete this.edtFilter;
-        delete this.todoList;
-        delete this.completedList;
+        this.btnAdd = null;
+        this.btnDelete = null;
+        this.btnCompleted = null;
+        this.edtFilter = null;
+        this.todoList = null;
+        this.completedList = null;
     }
 
     async _filter(text) {

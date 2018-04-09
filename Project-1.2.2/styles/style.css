@@ -99,33 +99,40 @@ li[aria-hidden="true"] {
     width: 60px;
     height: 34px;
     cursor: pointer;
+    background-color: white;        
 }
 
 .switch:before {
     content: "";
     position: absolute;
-    background-color: yellow;
     display: block;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     border-radius: 50px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 3px;
+    background-color: white;            
 }
 
 .switch:after {
     content: "";
     position: absolute;
-    background-color: blue;
     height: 26px;
     width: 26px;
-    left: 4px;
+    left: 1px;
     bottom: 4px;
     display: block;
-    top: 4px;
+    top: 1px;
     width: 50%;
     border-radius: 50%;
     transition: 1s;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 3px;
+    background-color: white;            
 }
 
 .flex-container {
@@ -134,18 +141,29 @@ li[aria-hidden="true"] {
 }
 
 .flex-container>div {
-    background-color: red;
+    background-color: white;
     font-size: 30px;
 }
 
 .flex-container>.title {
-    background-color: purple;
+    background-color: white;
     font-size: 30px;
     width: 5rem;
 }
 
-[data-completed="true"] .switch:after {
-    transform: translateX(26px);
-    background-color: lightgrey;
+[data-completed="false"] .switch:before {
+    background-color: white;
 }
 
+[data-completed="true"] .switch:before {
+    background-color: lightgreen;
+    border-style: none;    
+}
+
+[data-completed="false"] .switch::after {
+    background-color: white;
+}
+
+[data-completed="true"] .switch::after {
+    transform: translateX(24px);
+}
