@@ -1,0 +1,17 @@
+{
+  "lang": "en-US",
+  "name": "App Name",
+  "short_name": "App Name",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Application Description",
+  "orientation": "any",
+  "theme_color": "#fb0",
+  "icons": [
+    {
+      "src": "images/app.svg",
+      "sizes": "16x16, 32x32 64x54 128x128 256x256 512x512"
+    }
+  ]
+}

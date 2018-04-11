@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#fb0">
+
+    <title>Application Title</title>
+
+    <link rel="stylesheet" href="./styles/style.css" async>
+    <link rel="stylesheet" href="./styles/mobile.css" media="screen and (max-device-width: 500px)" defer>
+    <link rel="stylesheet" href="./styles/desktop.css" media="screen and (min-device-width: 1200px)" defer>
+    <link rel="manifest" href="./manifest.json" async>
+</head>
+<body aurelia-app="main">
+    <h1>Welcome to my application</h1>
+    <p>
+        please wait while loading content
+    </p>
+
+    <script async>
+        function jspmLoaded() {
+            System.import('aurelia-bootstrapper');
+        }
+    </script>
+
+    <script src="./jspm_packages/system.js" defer></script>
+    <script src="./config.js" onload="jspmLoaded()" defer></script>
+
+    <script async>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js', {scope: '/'})
+                .catch(error => console.error('service worker registration failed with ' + error))
+        }
+    </script>
+</body>
+</html>

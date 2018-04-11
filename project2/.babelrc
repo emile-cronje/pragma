@@ -1,0 +1,20 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 Chrome versions"]
+          },
+          "modules": "systemjs",
+          "loose": true
+        }]
+      ],
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties"
+      ],
+      "sourceMaps": "inline"
+    }
+  }
+}

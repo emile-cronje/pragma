@@ -1,0 +1,73 @@
+{
+  "name": "@pragmaproducts/aurelia-test-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha --compilers js:babel-core/register --recursive",
+    "build": "BABEL_ENV=development && bucli -c all",
+    "run": "bucli -c all && http-server -c-1 -o",
+    "build-publish": "bucli -p"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jspm": {
+    "registry": "npm",
+    "dependencies": {
+      "aurelia-bootstrapper": "^2.1.1",
+      "aurelia-event-aggregator": "^1.0.1",
+      "aurelia-framework": "^1.1.2",
+      "aurelia-pal-browser": "^1.2.1",
+      "pragma-api": "^1.0.62",
+      "pragma-menu": "^1.0.17",
+      "pragma-views": "^0.0.127"
+    },
+    "devDependencies": {}
+  },
+  "devDependencies": {
+    "aurelia-event-aggregator": "^1.0.1",
+    "aurelia-framework": "^1.1.2",
+    "aurelia-pal-nodejs": "^1.0.0-beta.1.0.0",
+    "aurelia-polyfills": "^1.2.1",
+    "babel-core": "^6.24.1",
+    "babel-plugin-istanbul": "^4.1.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "jspm": "^0.16.53",
+    "jspm-github": "^0.13.18",
+    "mocha": "^3.4.2",
+    "nyc": "^10.3.2",
+    "sinon": "^2.3.1"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "app/**/*.*",
+      "src/main.js",
+      "node_modules/**/*.*",
+      "jspm_packages/**/*.*"
+    ],
+    "cache": true,
+    "all": true
+  },
+  "babel": {
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties"
+    ]
+  }
+}

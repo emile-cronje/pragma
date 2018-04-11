@@ -1,0 +1,18 @@
+<template>
+    <div class="application-layout">
+        <div class="application-body">
+            <router-view></router-view>
+        </div>
+
+        <assistant ref="assistant">
+            <svg slot="logo" width="136" height="16" viewBox="17 12 136 16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M36.366 12.004h1.756l6.489 10.939V12.004h3.21v15.928h-3.397l-6.489-10.939v10.94h-3.21v-14.22c0-.914.726-1.709 1.64-1.709M56.27 12.004h1.617v6.184l5.927-6.184h4.141l-5.977 6.184 6.52 9.744h-3.981l-4.794-7.026-1.836 2.032v4.994h-3.256V13.713c0-.914.726-1.709 1.64-1.709M69.634 13.713c0-1.1.539-1.685 1.64-1.709h8.758v2.764h-7.188v3.42h5.925s.016 2.608 0 2.694h-5.925v4.123h7.188v2.927H69.634V13.713zM86.367 27.932v-6.23l-5.2-9.698h3.725l3.138 6.14 2.575-5.18c.304-.633.796-.96 1.5-.96h2.744l-5.18 9.698v6.23h-3.302z" fill="#FFF"/><path fill="#50E3AC" d="M25.745 12.008v3.25h4.018v4.052h3.284v-7.302z"/><path d="M29.665 21.527a4.796 4.796 0 1 1-6.142-6.155v-3.364c-2.714.577-5.084 2.546-5.974 5.216a8.69 8.69 0 0 0-.437 2.654 8.05 8.05 0 0 0 8.05 8.05c3.219 0 6.676-2.165 7.645-5.337.104-.34.181-.697.24-1.064h-3.382z" fill="#FFF"/></g></svg>
+            <div slot="content">some content from app.html</div>
+        </assistant>
+    </div>
+
+    <div id="menu-background" aria-hidden="true"></div>
+    <menu menu-items.bind="menuItems"></menu>
+    <pragma-lookup></pragma-lookup>
+    <pragma-messages></pragma-messages>
+    <pragma-errors></pragma-errors>
+</template>
